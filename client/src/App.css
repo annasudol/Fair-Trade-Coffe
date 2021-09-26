@@ -1,70 +1,22 @@
-body {
-  background-color: #fff;
-  padding: 2em;
-  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-  color: #212121;
-}
-.container {
-  width: 80%;
-  margin: 0 auto;
+.App {
+  text-align: center;
 }
 
-.bold {
-  font-weight: bolder;
+.App-logo {
+  height: 40vmin;
 }
 
-input {
-  width: 80%;
-  padding: 12px 20px;
-  margin: 10px 0;
-}
-
-button {
-  cursor: pointer;
-  background-color: #4caf50;
-  border: none;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
-  background-color: #00bcd4;
-  font-size: 16px;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
 }
 
-.sell {
-  background-color: white;
-  color: #d1c4e9;
-}
-
-.ftc-intro {
-  background-color: #0097a7;
-  color: white;
-  width: 100%;
-  padding: 20px;
-}
-
-.form-group {
-  background-color: #0097a7;
-  color: black;
-  width: 50%;
-  padding: 30px;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-}
-
-.form-break {
-  background-color: #fff;
-  color: white;
-  width: 100%;
-  padding: 5px;
-}
-
-.horizontal-rule {
-  background-color: #bdbdbd;
-}
-
-.box {
-  min-width: 700px;
-  width: 50%;
+.App-link {
+  color: #09d3ac;
 }
