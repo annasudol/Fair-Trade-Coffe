@@ -1,4 +1,12 @@
 pragma solidity ^0.4.24;
+
+import "../coffeecore/Ownable.sol";
+import "../coffeeaccesscontrol/ConsumerRole.sol";
+import "../coffeeaccesscontrol/DistributorRole.sol";
+import "../coffeeaccesscontrol/FarmerRole";
+import "../coffeeaccesscontrol/RetailerRole.sol";
+import "../coffeeaccesscontrol/Roles.sol";
+
 // Define a contract 'Supplychain'
 contract SupplyChain {
 
@@ -117,7 +125,7 @@ contract SupplyChain {
     require(items[_upc].itemState == State.Sold);
     _;
   }
-  
+
   // Define a modifier that checks if an item.state of a upc is Shipped
   modifier shipped(uint _upc) {
     require(items[_upc].itemState == State.Shipped);
@@ -169,10 +177,11 @@ contract SupplyChain {
       productID: _upc + sku,
       productNotes: _productNotes,
       productPrice : 0,
-      itemState: defaultState
+      itemState: defaultState,
       distributorID: address(0),
       retailerID: address(0),
       consumerID: address(0)
+    });
     // Increment sku
     sku = sku + 1;
     // Emit the appropriate event
@@ -180,19 +189,34 @@ contract SupplyChain {
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
-  function processItem(uint _upc) public onlyFarmer harvested(_upc) verifyCaller(items[_upc].originFarmerID) {
-    items[_upc].itemState = State.Processed;
-    emit Processed(_upc);
-  }
+    function processItem(uint256 _upc)
+        public
+        onlyFarmer
+        harvested(_upc)
+        verifyCaller(items[_upc].originFarmerID)
+    {
+        // Update the appropriate fields
+        items[_upc].itemState = State.Processed;
+        // Emit the appropriate event
+        emit Processed(_upc);
+    }
 
   // Define a function 'packItem' that allows a farmer to mark an item 'Packed'
-  function packItem(uint _upc) public onlyFarmer processed(_upc) verifyCaller(items[_upc].originFarmerID) {
+  function packItem(uint _upc)
+    public
+    processed(_upc)
+    onlyFarmer
+    verifyCaller(items[_upc].originFarmerID) {
     items[_upc].itemState = State.Packed;
     emit Packed(_upc);
   }
 
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
-  function sellItem(uint _upc, uint _price) public onlyFarmer packed(_upc) verifyCaller(items[_upc].originFarmerID) {
+  function sellItem(uint _upc, uint _price)
+    public
+    packed(_upc)
+    onlyFarmer
+    verifyCaller(items[_upc].originFarmerID) {
     items[_upc].itemState = State.ForSale;
     emit ForSale(_upc);
   }
@@ -288,7 +312,7 @@ contract SupplyChain {
   distributorID = items[_upc].distributorID;
   retailerID = items[_upc].retailerID;
   consumerID = item[_upc].consumerID;
-  
+
   return 
   (
   itemSKU,

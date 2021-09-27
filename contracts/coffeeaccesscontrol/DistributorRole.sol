@@ -5,7 +5,7 @@ import "./Roles.sol";
 
 // Define a contract 'DistributorRole' to manage this role - add, remove, check
 contract DistributorRole {
-  using Roles for Roles
+  using Roles for Roles;
   // Define 2 events, one for Adding, and other for Removing
   event AddDistrinutor(address indexed account);
   event RemoveDistrinutor(address indexed account);
@@ -18,7 +18,7 @@ contract DistributorRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlyDistributor() {
-    require(addDistributor(msg.sender));
+    require(addDistributor(msg.sender), "Only distributor can perform this action");
     _;
   }
 
