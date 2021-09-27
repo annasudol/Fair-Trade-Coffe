@@ -1,12 +1,10 @@
 pragma solidity ^0.4.24;
-
 import "../coffeecore/Ownable.sol";
 import "../coffeeaccesscontrol/ConsumerRole.sol";
 import "../coffeeaccesscontrol/DistributorRole.sol";
 import "../coffeeaccesscontrol/FarmerRole";
 import "../coffeeaccesscontrol/RetailerRole.sol";
 import "../coffeeaccesscontrol/Roles.sol";
-
 // Define a contract 'Supplychain'
 contract SupplyChain {
 
@@ -218,6 +216,7 @@ contract SupplyChain {
     onlyFarmer
     verifyCaller(items[_upc].originFarmerID) {
     items[_upc].itemState = State.ForSale;
+    items[_upc].productPrice = _price;
     emit ForSale(_upc);
   }
   
