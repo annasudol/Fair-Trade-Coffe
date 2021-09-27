@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function TransactionHistory({ accounts, app }) {
+function TransactionHistory({accounts, contract }) {
   return (
     <div className="box">
       <h2>

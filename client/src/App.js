@@ -40,13 +40,13 @@ function App() {
 if (!app.web3) {
   return <div>Loading Web3, accounts, and contract...</div>;
 }
-const { accounts, contract } = app
+const { accounts, contract, contract } = app
 return (
   <div className="App">
-    <FarmDetail />
-    <ProductDetails />
-    <ProductOverview />
-    <TransactionHistory />
+    <ProductOverview accounts={accounts} contract={contract} />
+    <FarmDetail accounts={accounts} contract={contract} />
+    <ProductDetails accounts={accounts} contract={contract} />
+    <TransactionHistory accounts={accounts} contract={contract} />
   </div>
 );
   

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function FarmDetail({ accounts, app }) {
+function FarmDetail({ accounts, contract }) {
   const [originFarmer, setOriginFarmer] =useState({id: '', name: '', info: '', lat: '-38.239770', long: '144.341490' });
   const handleClick=(value)=> {
     console.log(value, 'V')

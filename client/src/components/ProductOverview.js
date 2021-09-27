@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ProductOverview({ accounts, app }) {
+function ProductOverview({ accounts, contract }) {
   const [sku, setSku] =useState('');
   const [upc, setUpc] =useState('');
   const [ownerId, setOwnerId] =useState('');
