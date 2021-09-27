@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 function ProductDetails({ accounts, app }) {
-  const [product, setProduct] =useState({ name: "Best beans for Espresso", price: 0 })
-  const [distributorId, setDistributor] =useState('')
-  const [retailerId, setRetailerId] =useState('')
-
+  const [product, setProduct] =useState({ name: "Best beans for Espresso", price: 0 });
+  const [distributorId, setDistributor] =useState('');
+  const [retailerId, setRetailerId] =useState('');
+  const handleClick=(value)=> {
+    console.log(value, 'V')
+  }
   return (
     <div className="box">
       <h2>Product Details</h2>
@@ -26,16 +28,16 @@ function ProductDetails({ accounts, app }) {
         <br />
         <input type="text" value={retailerId} onChange={(e)=> setRetailerId(e.target.value)} size="50" />
         <br />
-        <button className="btn-buy" type="button">
+        <button className="btn-buy" type="button" onClick={()=> handleClick('buy')}>
           Buy
         </button>
-        <button className="btn-ship" type="button">
+        <button className="btn-ship" type="button" onClick={()=> handleClick('ship')}>
           Ship
         </button>
-        <button className="btn-receive" type="button">
+        <button className="btn-receive" type="button" onClick={()=> handleClick('receive')}>
           Receive
         </button>
-        <button className="btn-purchase" type="button">
+        <button className="btn-purchase" type="button" onClick={()=> handleClick('purchase')}>
           Purchase
         </button>
       </div>
