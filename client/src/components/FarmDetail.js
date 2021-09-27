@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function FarmDetail({ accounts, app }) {
   const [originFarmer, setOriginFarmer] =useState({id: '', name: '', info: '', lat: '-38.239770', long: '144.341490' });
   return (
-    <div>
+    <div class="box">
       <h2>Farm Details</h2>
       <div className="form-group">
         Farmer ID

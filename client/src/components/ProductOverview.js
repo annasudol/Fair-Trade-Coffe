@@ -5,7 +5,7 @@ function ProductOverview({ accounts, app }) {
   const [upc, setUpc] =useState('');
   const [ownerId, setOwnerId] =useState('')
   return (
-    <div>
+    <div class="box">
       <h2>Product Overview</h2>
       <div className="form-group">
         SKU

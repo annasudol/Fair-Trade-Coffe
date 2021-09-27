@@ -11,7 +11,7 @@ import TransactionHistory from "./components/TransactionHistory.js";
 
 function App() {
   const [app, setApp] = useState({ web3: null, accounts: null, contract: null });
- 
+
   useEffect(() => {
     async function fetchApp() {
       try {
@@ -33,9 +33,7 @@ function App() {
         console.error('Failed to load web3');
       }
     }
-
     fetchApp()
-    
 }, []);
 
 
