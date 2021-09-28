@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SupplyChain from "./contracts/SupplyChain.json";
-
 import getWeb3 from "./getWeb3";
-
 import "./App.css";
 import FarmDetail from "./components/FarmDetail.js";
 import ProductDetails from "./components/ProductDetails.js";
@@ -21,8 +19,6 @@ function App() {
         const accounts = await web3.eth.getAccounts();
         const networkId = await web3.eth.net.getId();
         const deployedNetwork = SupplyChain.networks[networkId];
-        console.log(deployedNetwork, 'deployedNetwork')
-
         const instance = new web3.eth.Contract(
           SupplyChain.abi,
           deployedNetwork && deployedNetwork.address,

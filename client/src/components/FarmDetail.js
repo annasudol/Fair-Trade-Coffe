@@ -2,22 +2,27 @@ import React, { useState } from 'react';
 
 function FarmDetail({ account, contract, upc, product }) {
   const [originFarmer, setOriginFarmer] =useState({id: '1', name: 'Farm', info: '', lat: '-38.239770', long: '144.341490' });
-  const handleClick=async (value)=> {
-    console.log(contract)
-    await contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name).send({from: account });
-    // switch (value) {
-    //   case "harvest":
-    //     contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-    //     break;
+  const [error, setError]= useState('');
+  const [transactionConfirmation, setTransactionConfirmation]= useState(null);
 
-    //   default:
-    //     alert('Default case');
-    //     break;
-    // }
+  const handleClick=async (value)=> {
+    contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+    .send({from: account }).then(res=> setTransactionConfirmation({ transaction: 'harvestItem', from: res.from, to: res.to, transactionHash: res.transactionHash }))
+    .catch((err=> setError(err.message)));
   }
+
+
   return (
     <div className="box">
       <h2>Farm Details</h2>
+      {transactionConfirmation && 
+      <><p className="conf"> Transaction {transactionConfirmation.transaction} confirmed</p>
+        <p className="conf">From: {transactionConfirmation.from}</p>
+        <p className="conf">To: {transactionConfirmation.to}</p>
+        <p className="conf">Response: {transactionConfirmation.res}</p>
+
+      </>
+      }
       <div className="form-group">
         Farmer ID
         <br />
