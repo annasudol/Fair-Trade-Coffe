@@ -21,6 +21,7 @@ function FarmDetail({ account, contract, upc, product }) {
         <p className="conf">To: {transactionConfirmation.to}</p>
         <p className="conf">Response: {transactionConfirmation.res}</p>
       </>
+      }
       { error && <p className="error">{error}</p> }
 
       <div className="form-group">
