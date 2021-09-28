@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 function ProductOverview({ accounts, contract }) {
-  const [sku, setSku] =useState('');
-  const [upc, setUpc] =useState('');
-  const [ownerId, setOwnerId] =useState('');
+  const [sku, setSku] =useState('1');
+  const [upc, setUpc] =useState('1');
+  const [ownerId, setOwnerId] =useState('0x627306090abab3a6e1400e9345bc60c78a8bef57');
   const handleClick=(value)=> {
     console.log(value, 'V')
   }

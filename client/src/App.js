@@ -10,7 +10,7 @@ import ProductOverview from "./components/ProductOverview.js";
 import TransactionHistory from "./components/TransactionHistory.js";
 
 function App() {
-  const [app, setApp] = useState({ web3: null, accounts: null, contract: null });
+  const [app, setApp] = useState({ web3: null, account: null, contract: null });
 
   useEffect(() => {
     async function fetchApp() {
@@ -23,9 +23,7 @@ function App() {
           SupplyChain.abi,
           deployedNetwork && deployedNetwork.address,
         );
-        console.log(instance.methods, 'contract')
-
-        setApp({ web3, accounts, contract: instance.methods });
+        setApp({ web3, account: accounts[0], contract: instance.methods });
       } catch (e) {
         alert(
           `Failed to load web3, accounts, or contract. Check console for details.`,

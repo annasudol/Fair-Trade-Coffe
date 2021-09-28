@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 function ProductDetails({ accounts, app }) {
-  const [product, setProduct] =useState({ name: "Best beans for Espresso", price: 0 });
-  const [distributorId, setDistributor] =useState('');
-  const [retailerId, setRetailerId] =useState('');
+  const [product, setProduct] =useState({ name: "Best beans for Espresso", price: 10 });
+  const [distributorId, setDistributor] =useState('0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef');
+  const [retailerId, setRetailerId] =useState('0xf17f52151ebef6c7334fad080c5704d77216b732');
   const handleClick=(value)=> {
     console.log(value, 'V')
   }
@@ -17,7 +17,7 @@ function ProductDetails({ accounts, app }) {
         <br />
         Product Price
         <br />
-        <input type="number" onChange={(e)=> setProduct({price: e.target.value})} />
+        <input type="number" value={product.price} onChange={(e)=> setProduct({price: e.target.value})} />
         ETH
         <br />
         Distributor ID
