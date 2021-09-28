@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 
-function FarmDetail({ accounts, contract }) {
+function FarmDetail({ account, contract, upc, product }) {
   const [originFarmer, setOriginFarmer] =useState({id: '1', name: 'Farm', info: '', lat: '-38.239770', long: '144.341490' });
-  const handleClick=(value)=> {
-    // console.log(value, 'V')()
-    console.log(contract, value, "contract")
+  const handleClick=async (value)=> {
+    console.log(contract)
+    await contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name).send({from: account });
+    // switch (value) {
+    //   case "harvest":
+    //     contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+    //     break;
 
-    switch (value) {
-      case "harvest":
-        // uint _upc, address _originFarmerID, string _originFarmName, string _originFarmInformation, string  _originFarmLatitude, string  _originFarmLongitude, string  _productNotes
-        // contract.harvestItem()
-        break;
-
-      default:
-        alert('Default case');
-            break;
-    }
+    //   default:
+    //     alert('Default case');
+    //     break;
+    // }
   }
   return (
     <div className="box">

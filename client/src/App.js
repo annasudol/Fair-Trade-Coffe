@@ -11,6 +11,8 @@ import TransactionHistory from "./components/TransactionHistory.js";
 
 function App() {
   const [app, setApp] = useState({ web3: null, account: null, contract: null });
+  const [upc, setUpc] =useState('1');
+  const [product, setProduct] =useState({ name: "Best beans for Espresso", price: 10 });
 
   useEffect(() => {
     async function fetchApp() {
@@ -19,6 +21,8 @@ function App() {
         const accounts = await web3.eth.getAccounts();
         const networkId = await web3.eth.net.getId();
         const deployedNetwork = SupplyChain.networks[networkId];
+        console.log(deployedNetwork, 'deployedNetwork')
+
         const instance = new web3.eth.Contract(
           SupplyChain.abi,
           deployedNetwork && deployedNetwork.address,
@@ -38,13 +42,13 @@ function App() {
 if (!app.web3) {
   return <div>Loading Web3, accounts, and contract...</div>;
 }
-const { accounts, contract } = app
+const { account, contract } = app
 return (
   <div className="App">
-    <ProductOverview accounts={accounts} contract={contract} />
-    <FarmDetail accounts={accounts} contract={contract} />
-    <ProductDetails accounts={accounts} contract={contract} />
-    <TransactionHistory accounts={accounts} contract={contract} />
+    <ProductOverview account={account} contract={contract} upc={upc} setUpc={setUpc} />
+    <FarmDetail account={account} contract={contract} upc={upc} product={product} />
+    <ProductDetails account={account} contract={contract} upc={upc} product={product} setProduct={setProduct} />
+    <TransactionHistory account={account} contract={contract} upc={upc} />
   </div>
 );
   
