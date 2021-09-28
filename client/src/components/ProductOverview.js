@@ -3,8 +3,23 @@ import React, { useState } from 'react';
 function ProductOverview({ account, contract, upc, setUpc }) {
   const [sku, setSku] =useState('1');
   const [ownerId, setOwnerId] =useState('0x627306090abab3a6e1400e9345bc60c78a8bef57');
+  const [error, setError]= useState(null);
+
   const handleClick=(value)=> {
-    console.log(value, 'V')
+    switch (value)
+    {
+      case 1:
+        contract.fetchItemBufferOne(upc).call()
+        .then(res=> console.log(res, 'res') )
+        .catch((err=> setError(err.message)));
+      break;
+      case 2:
+        contract.fetchItemBufferTwo(upc).call()
+        .then(res=> console.log(res, 'res') )
+        .catch((err=> setError(err.message)));
+      default:
+      break;
+    }
   }
   return (
     <div className="box">

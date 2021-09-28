@@ -1,14 +1,50 @@
 import React, { useState } from 'react';
+import Web3 from "web3";
 
-function ProductDetails({ account, app, upc, product, setProduct }) {
+function ProductDetails({ account, contract, upc, product, setProduct }) {
   const [distributorId, setDistributor] =useState('0xd06d2Ba7A66F880122133556714281c4e511DF33');
   const [retailerId, setRetailerId] =useState('0x1c309018c95d6797Cc04af4a4fFA752Be51c808C');
-  const handleClick=(value)=> {
-    console.log(value, 'V', upc)
+  const [error, setError]= useState(null);
+  const [transactionConfirmation, setTransactionConfirmation]= useState(null);
+
+  const handleClick=async (value)=> {
+    switch (value)
+    {
+      case "buy":
+        contract.buyItem(upc).send({from: account, value: 1 })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break;
+      case "ship":
+        contract.shipItem(upc).send({from: account })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break;
+      case "receive":
+        contract.receiveItem(upc).send({from: account })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break;
+      case "purchase":
+        contract.purchaseItem(upc).send({from: account })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break
+      default:
+      break;
+    }
   }
   return (
     <div className="box">
       <h2>Product Details</h2>
+      {transactionConfirmation && 
+      <><p className="conf"> Transaction {transactionConfirmation.transaction} confirmed</p>
+        <p className="conf">From: {transactionConfirmation.from}</p>
+        <p className="conf">To: {transactionConfirmation.to}</p>
+        <p className="conf">TransactionHash: {transactionConfirmation.transactionHash}</p>
+      </>
+      }
+      { error && <p className="error">{error}</p> }
       <div className="form-group">
         Product Notes
         <br />

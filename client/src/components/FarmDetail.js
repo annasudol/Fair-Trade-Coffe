@@ -10,28 +10,26 @@ function FarmDetail({ account, contract, upc, product }) {
     {
       case "harvest":
         contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-        .send({from: account }).then(res=> setTransactionConfirmation({ transaction: 'harvest', from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .send({from: account }).then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
       break;
-
       case "process":
         contract.processItem(upc).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: 'processed', from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
       break;
       case "pack":
         contract.packItem(upc).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: 'packed', from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
       break;
       case "forsale":
         contract.sellItem(upc, product.price).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: 'packed', from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
 
       default:
-          alert('Default case');
-          break;
+      break;
     }
   }
 
