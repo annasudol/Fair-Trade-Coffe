@@ -79,3 +79,7 @@ h2 {
 .conf {
   font-size: 9px;
 }
+
+.error{
+  color: red;
+}

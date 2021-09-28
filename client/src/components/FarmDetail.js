@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function FarmDetail({ account, contract, upc, product }) {
   const [originFarmer, setOriginFarmer] =useState({id: '1', name: 'Farm', info: '', lat: '-38.239770', long: '144.341490' });
-  const [error, setError]= useState('');
+  const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
 
   const handleClick=async (value)=> {
@@ -20,9 +20,9 @@ function FarmDetail({ account, contract, upc, product }) {
         <p className="conf">From: {transactionConfirmation.from}</p>
         <p className="conf">To: {transactionConfirmation.to}</p>
         <p className="conf">Response: {transactionConfirmation.res}</p>
-
       </>
-      }
+      { error && <p className="error">{error}</p> }
+
       <div className="form-group">
         Farmer ID
         <br />
