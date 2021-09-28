@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 function ProductDetails({ account, app, upc, product, setProduct }) {
-  const [distributorId, setDistributor] =useState('0xc5fdf4076b8f3a5357c5e395ab970b5b54098fef');
-  const [retailerId, setRetailerId] =useState('0xf17f52151ebef6c7334fad080c5704d77216b732');
+  const [distributorId, setDistributor] =useState('0xd06d2Ba7A66F880122133556714281c4e511DF33');
+  const [retailerId, setRetailerId] =useState('0x1c309018c95d6797Cc04af4a4fFA752Be51c808C');
   const handleClick=(value)=> {
     console.log(value, 'V', upc)
   }

@@ -78,6 +78,8 @@ h2 {
 
 .conf {
   font-size: 9px;
+  text-align: left;
+  overflow: hidden;
 }
 
 .error{
