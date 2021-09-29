@@ -1,0 +1,22 @@
+{
+  "name": "supply-chain-E",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "2.4.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "openzeppelin-solidity": "^2.3.0",
+    "solc": "^0.8.6",
+    "truffle-hdwallet-provider": "^1.0.17",
+    "web3": "^1.4.0"
+  }
+}
