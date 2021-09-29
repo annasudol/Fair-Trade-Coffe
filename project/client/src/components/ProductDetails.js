@@ -6,7 +6,7 @@ function ProductDetails({ account, contract, upc, product, setProduct }) {
   const [retailerId, setRetailerId] =useState('0x1c309018c95d6797Cc04af4a4fFA752Be51c808C');
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
-
+  console.log(contract)
   const handleClick=async (value)=> {
     switch (value)
     {

@@ -10,7 +10,7 @@ function FarmDetail({ account, contract, upc, product }) {
     {
       case "harvest":
         contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-        .send({from: account }).then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .send({from: account }).then(res=> console.log(res, 'res') )
         .catch((err=> setError(err.message)));
       break;
       case "process":
