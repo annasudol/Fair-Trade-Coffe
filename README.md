@@ -27,8 +27,6 @@ Give examples (to be clarified)
 
 ### Installing
 
-> The starter code is written for **Solidity v0.4.24**. At the time of writing, the current Truffle v5 comes with Solidity v0.5 that requires function *mutability* and *visibility* to be specified (please refer to Solidity [documentation](https://docs.soliditylang.org/en/v0.5.0/050-breaking-changes.html) for more details). To use this starter code, please run `npm i -g truffle@4.1.14` to install Truffle v4 with Solidity v0.4.24. 
-
 A step by step series of examples that tell you have to get a development env running
 
 Clone this repository:
@@ -37,10 +35,10 @@ Clone this repository:
 git clone https://github.com/udacity/nd1309/tree/master/course-5/project-6
 ```
 
-Change directory to ```project``` folder and install all requisite npm packages (as listed in ```package.json```):
+Change directory to ```project-6``` folder and install all requisite npm packages (as listed in ```package.json```):
 
 ```
-cd project
+cd project-6
 npm install
 ```
 
