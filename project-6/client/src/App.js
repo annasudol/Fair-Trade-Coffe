@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import SupplyChain from "../../build/contracts/SupplyChain.json";
+import SupplyChain from "./contracts/SupplyChain.json";
 import getWeb3 from "./getWeb3";
 import "./App.css";
 import FarmDetail from "./components/FarmDetail.js";
