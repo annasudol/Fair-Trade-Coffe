@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import TruffleContract from 'truffle-contract'
+import SupplyChain from "../contracts/SupplyChain.json";
 
-function FarmDetail({ account, contract, upc, product }) {
-  const [originFarmer, setOriginFarmer] =useState({id: '1', name: 'Farm', info: '', lat: '-38.239770', long: '144.341490' });
+function FarmDetail({ account, contract, upc, product, instance }) {
+  const [originFarmer, setOriginFarmer] =useState({id: '1', name: 'Farm', info: 'nothing', lat: '-38.239770', long: '144.341490' });
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
 
   const handleClick=async (value)=> {
+
     switch (value)
     {
       case "harvest":
-        contract.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-        .send({from: account }).then(res=> console.log(res, 'res') )
+        console.log(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+        // contract.deployed().then((instance) => console.log(instance, 'instance'));
+        instance.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+        .then(res=> console.log(res, 'res') )
         .catch((err=> setError(err.message)));
       break;
       case "process":
