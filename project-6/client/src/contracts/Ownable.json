@@ -81,9 +81,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.24;\n\n/// Provides basic authorization control\ncontract Ownable {\n    address private origOwner;\n\n    // Define an Event\n    event TransferOwnership(address indexed oldOwner, address indexed newOwner);\n\n    /// Assign the contract to an owner\n    constructor () internal {\n        origOwner = msg.sender;\n        emit TransferOwnership(address(0), origOwner);\n    }\n\n    /// Look up the address of the owner\n    function owner() public view returns (address) {\n        return origOwner;\n    }\n\n    /// Define a function modifier 'onlyOwner'\n    modifier onlyOwner() {\n        require(isOwner());\n        _;\n    }\n\n    /// Check if the calling address is the owner of the contract\n    function isOwner() public view returns (bool) {\n        return msg.sender == origOwner;\n    }\n\n    /// Define a function to renounce ownerhip\n    function renounceOwnership() public onlyOwner {\n        emit TransferOwnership(origOwner, address(0));\n        origOwner = address(0);\n    }\n\n    /// Define a public function to transfer ownership\n    function transferOwnership(address newOwner) public onlyOwner {\n        _transferOwnership(newOwner);\n    }\n\n    /// Define an internal function to transfer ownership\n    function _transferOwnership(address newOwner) internal {\n        require(newOwner != address(0));\n        emit TransferOwnership(origOwner, newOwner);\n        origOwner = newOwner;\n    }\n}\n",
-  "sourcePath": "/Users/annasudol/Downloads/Udacity-Blockchain-Project-3-master/project-6/contracts/coffeecore/Ownable.sol",
+  "sourcePath": "/Users/annasudol/Documents/Fair-Trade-Coffe/project-6/contracts/coffeecore/Ownable.sol",
   "ast": {
-    "absolutePath": "/Users/annasudol/Downloads/Udacity-Blockchain-Project-3-master/project-6/contracts/coffeecore/Ownable.sol",
+    "absolutePath": "/Users/annasudol/Documents/Fair-Trade-Coffe/project-6/contracts/coffeecore/Ownable.sol",
     "exportedSymbols": {
       "Ownable": [
         1468
@@ -1445,7 +1445,7 @@
     "src": "0:1411:7"
   },
   "legacyAST": {
-    "absolutePath": "/Users/annasudol/Downloads/Udacity-Blockchain-Project-3-master/project-6/contracts/coffeecore/Ownable.sol",
+    "absolutePath": "/Users/annasudol/Documents/Fair-Trade-Coffe/project-6/contracts/coffeecore/Ownable.sol",
     "exportedSymbols": {
       "Ownable": [
         1468
@@ -2812,5 +2812,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2021-09-30T11:14:13.598Z"
+  "updatedAt": "2021-09-30T11:21:54.705Z"
 }
