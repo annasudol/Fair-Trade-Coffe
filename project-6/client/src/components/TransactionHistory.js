@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function TransactionHistory({account, contract }) {
-  console.log(contract, 'contract')
+  // console.log(contract, 'contract')
   return (
     <div className="box">
       <h2>

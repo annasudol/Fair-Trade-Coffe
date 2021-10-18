@@ -3,19 +3,15 @@ import TruffleContract from 'truffle-contract'
 import SupplyChain from "../contracts/SupplyChain.json";
 
 function WhoIsAccount({ account, contract, upc, product, instance }) {
-  debugger
+  // debugger
   const [error, setError]= useState(null);
 
   // debugger
   
-  window.ethereum.on('accountsChanged', function (accounts) {
-    console.log(accounts)
-    // Time to reload your interface with accounts[0]!
-  })
   useEffect(()=> {
-    console.log(instance.methods, 'instance.methods')
+    // console.log(instance.methods, 'instance.methods')
 
-      instance.methods.isFarmer(account).call().then(res=> console.log(res, 'res') )
+      instance.methods.isFarmer(account).call().then(res=> console.log(res, 'res') ).catch(err=> console.log(err, "err"))
       instance.methods.isRetailer(account).call().then(res=> console.log(res, 'res') );
       instance.methods.isDistributor(account).call().then(res=> console.log(res, 'res') )
       instance.methods.isConsumer(account).call().then(res=> console.log(res, 'res') )

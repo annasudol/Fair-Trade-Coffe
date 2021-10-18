@@ -11,7 +11,7 @@ function ProductOverview({ account, contract, upc, setUpc }) {
     switch (value)
     {
       case 1:
-      debugger
+      // debugger
         contract.methods.fetchItemBufferOne(upc).call()
         .then(res=> console.log(res, 'res') )
         .catch((err=> setError(err.message)));

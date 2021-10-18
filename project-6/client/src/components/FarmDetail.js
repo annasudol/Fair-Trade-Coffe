@@ -16,7 +16,7 @@ function FarmDetail({ account, contract, upc, product, instance }) {
       case "harvest":
         // contract.deployed().then((instance) => console.log(instance, 'instance'));
         const l = instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-        debugger
+        // debugger
         instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
         .send({from: account}, (err,res)=>{
           console.log('err',err)

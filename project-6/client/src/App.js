@@ -15,7 +15,7 @@ function App() {
 
   const [upc, setUpc] =useState('1');
   const [product, setProduct] =useState({ name: "Best beans for Espresso", price: 10 });
-
+  
   useEffect(() => {
     let web3 = window.web3;  
       if (typeof web3 !== 'undefined') {
@@ -35,8 +35,6 @@ function App() {
           SupplyChain.abi,
           deployedNetwork && deployedNetwork.address,
         );
- 
-
 
         setApp({ ...app, web3, account: accounts[0], contract: instance });
       } catch (e) {
@@ -47,16 +45,21 @@ function App() {
       }
     }
     fetchApp()
- 
-    console.log(app.accounts, 'app.accounts')
-}, [window.web3]);
+ }, [app.web3]);
+
+
+  useEffect(()=> {
+    window.ethereum.on('accountsChanged', function (accounts) {
+      setApp({ ...app, account: accounts[0] });
+    })
+  }, []);
+
 
 
 if (!app.web3) {
   return <div>Loading Web3, accounts, and contract...</div>;
 }
 const { account, contract } = app
-console.log(contract, 'contract')
 
 return (
   <div className="App">
