@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 
 function ProductOverview({ account, contract, upc, setUpc }) {
+  // debugger
   const [sku, setSku] =useState('1');
   const [ownerId, setOwnerId] =useState('0x627306090abab3a6e1400e9345bc60c78a8bef57');
   const [error, setError]= useState(null);
 
   const handleClick=(value)=> {
+
     switch (value)
     {
       case 1:
-        contract.fetchItemBufferOne(upc).call()
+      debugger
+        contract.methods.fetchItemBufferOne(upc).call()
         .then(res=> console.log(res, 'res') )
         .catch((err=> setError(err.message)));
       break;
       case 2:
-        contract.fetchItemBufferTwo(upc).call()
+        contract.methods.fetchItemBufferTwo(upc).call()
         .then(res=> console.log(res, 'res') )
         .catch((err=> setError(err.message)));
       default:
@@ -24,6 +27,7 @@ function ProductOverview({ account, contract, upc, setUpc }) {
   return (
     <div className="box">
       <h2>Product Overview</h2>
+      { error && <p className="error">{error}</p> }
       <div className="form-group">
         SKU
         <br />

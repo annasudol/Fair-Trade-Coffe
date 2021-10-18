@@ -7,16 +7,21 @@ function FarmDetail({ account, contract, upc, product, instance }) {
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
 
+  // debugger
+ 
   const handleClick=async (value)=> {
 
     switch (value)
     {
       case "harvest":
-        console.log(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
         // contract.deployed().then((instance) => console.log(instance, 'instance'));
-        instance.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-        .then(res=> console.log(res, 'res') )
-        .catch((err=> setError(err.message)));
+        const l = instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+        debugger
+        instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+        .send({from: account}, (err,res)=>{
+          console.log('err',err)
+          console.log('res',res)
+        })
       break;
       case "process":
         contract.processItem(upc).send({from: account })
