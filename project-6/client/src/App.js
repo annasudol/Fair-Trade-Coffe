@@ -11,7 +11,6 @@ import TruffleContract from 'truffle-contract'
 
 function App() {
   const [app, setApp] = useState({ web3: null, account: null, contract: null });
-  const [instance, setInstance] = useState(null);
 
   const [upc, setUpc] =useState('1');
   const [product, setProduct] =useState({ name: "Best beans for Espresso", price: 10 });
@@ -64,11 +63,11 @@ const { account, contract } = app
 return (
   <div className="App">
   
-    <ProductOverview account={account} contract={contract} upc={upc} setUpc={setUpc} />
-    <FarmDetail account={account} contract={contract} upc={upc} product={product} instance={contract} />
-    <ProductDetails account={account} contract={contract} upc={upc} product={product} setProduct={setProduct} />
-    <TransactionHistory account={account} contract={contract} upc={upc} />
-    <WhiIsAccount account={account} contract={contract} upc={upc} product={product} instance={contract}/>
+    <ProductOverview account={account} instance={contract} upc={upc} setUpc={setUpc} />
+    <FarmDetail account={account} upc={upc} product={product} instance={contract} />
+    <ProductDetails account={account} instance={contract} upc={upc} product={product} setProduct={setProduct} />
+    <TransactionHistory account={account} instance={contract} upc={upc} />
+    <WhiIsAccount account={account} instance={contract} upc={upc} product={product}/>
   </div>
 );
   

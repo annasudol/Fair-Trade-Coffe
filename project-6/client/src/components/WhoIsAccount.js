@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import TruffleContract from 'truffle-contract'
-import SupplyChain from "../contracts/SupplyChain.json";
 
-function WhoIsAccount({ account, contract, upc, product, instance }) {
+function WhoIsAccount({ account, instance, upc, product }) {
   // debugger
   const [error, setError]= useState(null);
 

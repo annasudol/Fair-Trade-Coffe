@@ -1,43 +1,43 @@
 import React, { useState } from 'react';
-import TruffleContract from 'truffle-contract'
-import SupplyChain from "../contracts/SupplyChain.json";
 
-function FarmDetail({ account, contract, upc, product, instance }) {
+
+function FarmDetail({ account, upc, product, instance }) {
   const [originFarmer, setOriginFarmer] =useState({id: '1', name: 'Farm', info: 'nothing', lat: '-38.239770', long: '144.341490' });
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
-
-  // debugger
  
   const handleClick=async (value)=> {
 
-    switch (value)
-    {
+    switch (value) {
       case "harvest":
-        // contract.deployed().then((instance) => console.log(instance, 'instance'));
-        const l = instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-        // debugger
+
         instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
         .send({from: account}, (err,res)=>{
-          console.log('err',err)
+          setError('Error with harvest item')
           console.log('res',res)
+          setTransactionConfirmation(res)
         })
       break;
       case "process":
-        contract.processItem(upc).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-        .catch((err=> setError(err.message)));
+        instance.methods.processItem(upc).send({from: account }).send({from: account}, (err,res)=>{
+          setError('Error with process item')
+          console.log('res',res)
+          setTransactionConfirmation(res)
+        })
       break;
       case "pack":
-        contract.packItem(upc).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-        .catch((err=> setError(err.message)));
+        instance.methods.packItem(upc).send({from: account}, (err,res)=>{
+          setError('Error with pack item')
+          console.log('res',res)
+          setTransactionConfirmation(res)
+        });
       break;
       case "forsale":
-        contract.sellItem(upc, product.price).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-        .catch((err=> setError(err.message)));
-
+        instance.methods.sellItem(upc, product.price).send({from: account}, (err,res)=>{
+          setError('Error with sell item')
+          console.log('res',res)
+          setTransactionConfirmation(res)
+        });
       default:
       break;
     }

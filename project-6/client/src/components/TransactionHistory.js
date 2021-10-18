@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function TransactionHistory({account, contract }) {
+function TransactionHistory({account, instance }) {
   // console.log(contract, 'contract')
   return (
     <div className="box">

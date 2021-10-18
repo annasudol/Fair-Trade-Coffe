@@ -1,32 +1,32 @@
 import React, { useState } from 'react';
 import Web3 from "web3";
 
-function ProductDetails({ account, contract, upc, product, setProduct }) {
+function ProductDetails({ account, instance, upc, product, setProduct }) {
   const [distributorId, setDistributor] =useState('0xd06d2Ba7A66F880122133556714281c4e511DF33');
   const [retailerId, setRetailerId] =useState('0x1c309018c95d6797Cc04af4a4fFA752Be51c808C');
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
-  console.log(contract)
+  console.log(instance)
   const handleClick=async (value)=> {
     switch (value)
     {
       case "buy":
-        contract.buyItem(upc).send({from: account, value: 1 })
+        instance.buyItem(upc).send({from: account, value: 1 })
         .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
       break;
       case "ship":
-        contract.shipItem(upc).send({from: account })
+        instance.shipItem(upc).send({from: account })
         .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
       break;
       case "receive":
-        contract.receiveItem(upc).send({from: account })
+        instance.receiveItem(upc).send({from: account })
         .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
       break;
       case "purchase":
-        contract.purchaseItem(upc).send({from: account })
+        instance.purchaseItem(upc).send({from: account })
         .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
         .catch((err=> setError(err.message)));
       break
