@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function FarmDetail({ account, upc, product, instance }) {
+function FarmDetail({ account, upc, product, methods }) {
   const [originFarmer, setOriginFarmer] =useState({id: '1', name: 'Farm', info: 'nothing', lat: '-38.239770', long: '144.341490' });
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
@@ -10,30 +10,32 @@ function FarmDetail({ account, upc, product, instance }) {
 
     switch (value) {
       case "harvest":
-
-        instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-        .send({from: account}, (err,res)=>{
-          setError('Error with harvest item')
-          console.log('res',res)
-          setTransactionConfirmation(res)
-        })
+      
+        
+// console.log(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+//         instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
+//         .send({from: account}, (err,res)=>{
+//           setError('Error with harvest item')
+//           console.log('res',res, err)
+//           setTransactionConfirmation(res)
+        // })
       break;
       case "process":
-        instance.methods.processItem(upc).send({from: account }).send({from: account}, (err,res)=>{
+        methods.processItem(upc).send({from: account }).send({from: account}, (err,res)=>{
           setError('Error with process item')
           console.log('res',res)
           setTransactionConfirmation(res)
         })
       break;
       case "pack":
-        instance.methods.packItem(upc).send({from: account}, (err,res)=>{
+        methods.packItem(upc).send({from: account}, (err,res)=>{
           setError('Error with pack item')
           console.log('res',res)
           setTransactionConfirmation(res)
         });
       break;
       case "forsale":
-        instance.methods.sellItem(upc, product.price).send({from: account}, (err,res)=>{
+        methods.sellItem(upc, product.price).send({from: account}, (err,res)=>{
           setError('Error with sell item')
           console.log('res',res)
           setTransactionConfirmation(res)

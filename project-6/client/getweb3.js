@@ -1,7 +1,7 @@
 import Web3 from "web3";
-import TruffleContract from 'truffle-contract'  
+// import TruffleContract from '@truffle-contract'  
  
-import SupplyChain from "./contracts/SupplyChain.json";
+// import SupplyChain from "../contracts/SupplyChain.json";
 const getWeb3 = () =>
   new Promise((resolve, reject) => {
     // Wait for loading completion to avoid race conditions with web3 injection timing.

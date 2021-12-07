@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
-import Web3 from "web3";
 
-function ProductDetails({ account, instance, upc, product, setProduct }) {
+function ProductDetails({ account, methods, upc, product, setProduct }) {
   const [distributorId, setDistributor] =useState('0xd06d2Ba7A66F880122133556714281c4e511DF33');
   const [retailerId, setRetailerId] =useState('0x1c309018c95d6797Cc04af4a4fFA752Be51c808C');
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
-  console.log(instance)
   const handleClick=async (value)=> {
-    switch (value)
-    {
-      case "buy":
-        instance.buyItem(upc).send({from: account, value: 1 })
-        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-        .catch((err=> setError(err.message)));
-      break;
-      case "ship":
-        instance.shipItem(upc).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-        .catch((err=> setError(err.message)));
-      break;
-      case "receive":
-        instance.receiveItem(upc).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-        .catch((err=> setError(err.message)));
-      break;
-      case "purchase":
-        instance.purchaseItem(upc).send({from: account })
-        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-        .catch((err=> setError(err.message)));
-      break
-      default:
-      break;
-    }
+    // switch (value)
+    // {
+    //   case "buy":
+    //     instance.buyItem(upc).send({from: account, value: 1 })
+    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+    //     .catch((err=> setError(err.message)));
+    //   break;
+    //   case "ship":
+    //     instance.shipItem(upc).send({from: account })
+    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+    //     .catch((err=> setError(err.message)));
+    //   break;
+    //   case "receive":
+    //     instance.receiveItem(upc).send({from: account })
+    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+    //     .catch((err=> setError(err.message)));
+    //   break;
+    //   case "purchase":
+    //     instance.purchaseItem(upc).send({from: account })
+    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+    //     .catch((err=> setError(err.message)));
+    //   break
+    //   default:
+    //   break;
+    // }
   }
   return (
     <div className="box">

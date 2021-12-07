@@ -85,3 +85,9 @@ h2 {
 .error{
   color: red;
 }
+
+.ss-b62m3t-container {
+  background-color: #4F6877 !important;
+  display: block;
+  padding: 8px 20px 5px 10px;
+}

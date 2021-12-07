@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ProductOverview({ account, instance, upc, setUpc }) {
+function ProductOverview({ account, contract, upc, setUpc }) {
   // debugger
   const [sku, setSku] =useState('1');
   const [ownerId, setOwnerId] =useState('0x627306090abab3a6e1400e9345bc60c78a8bef57');
@@ -12,12 +12,12 @@ function ProductOverview({ account, instance, upc, setUpc }) {
     {
       case 1:
       // debugger
-        instance.methods.fetchItemBufferOne(upc).call()
+      contract.fetchItemBufferOne(upc).call()
         .then(res=> console.log(res, 'res') )
         .catch((err=> setError(err.message)));
       break;
       case 2:
-        instance.methods.fetchItemBufferTwo(upc).call()
+        contract.fetchItemBufferTwo(upc).call()
         .then(res=> console.log(res, 'res') )
         .catch((err=> setError(err.message)));
       default:

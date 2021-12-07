@@ -64,6 +64,12 @@ contract SupplyChain is FarmerRole, DistributorRole, RetailerRole, ConsumerRole 
   event Received(uint upc);
   event Purchased(uint upc);
 
+
+   /// Check if the calling address is the owner of the contract
+    function isOwner(address account) public view returns (bool) {
+        return account == owner;
+    }
+
   // Define a modifer that checks to see if msg.sender == owner of the contract
   modifier onlyOwner() {
     require(msg.sender == owner);
