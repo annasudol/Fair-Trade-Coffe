@@ -5,7 +5,7 @@ const path = require("path");
 let privateKey = process.env.PRIVATE_KEY;
 
 module.exports = {
-  contracts_build_directory: path.join(__dirname, "client/contracts"),
+  contracts_build_directory: path.join(__dirname, "./client/contracts"),
   networks: {
     development: {
       host: "127.0.0.1",

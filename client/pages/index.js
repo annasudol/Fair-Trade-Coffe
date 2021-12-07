@@ -28,7 +28,6 @@ export default function Home() {
         );
 
         setApp({ ...app, web3, account: accounts[0], contract: instance });
-        console.log(instance, 'instance')
 
       } catch (e) {
         alert(
@@ -54,11 +53,11 @@ const { account, contract } = app
 
 return (
   <div className={styles.App}>
-    {/* <TransactionHistory account={account} contract={contract} upc={upc} /> */}
-    {/* <AddRole account={account} methods={contract.methods} /> */}
-    {/* <ProductOverview methods={contract.methods} contract={contract} upc={upc} setUpc={setUpc} /> */}
-    {/* <FarmDetail account={account} upc={upc} product={product} instance={contract} /> */}
-    {/* <ProductDetails account={account} methods={contract.methods} upc={upc} product={product} setProduct={setProduct} /> */}
+    <TransactionHistory account={account} contract={contract} upc={upc} />
+    <AddRole account={account} methods={contract.methods} />
+    <ProductOverview methods={contract.methods} contract={contract} upc={upc} setUpc={setUpc} />
+    <FarmDetail account={account} upc={upc} product={product} instance={contract} />
+    <ProductDetails account={account} methods={contract.methods} upc={upc} product={product} setProduct={setProduct} />
   </div>
 );
 }
