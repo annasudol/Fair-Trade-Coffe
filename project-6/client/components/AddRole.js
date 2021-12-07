@@ -16,13 +16,14 @@ function AddRole({ methods, account }) {
   const handleClick=()=> {
     const methodName = `add${role.value.charAt(0).toLocaleUpperCase() + role.value.slice(1)}`
     const method =methods[methodName]
-    method(address).send({from: account }).then(res=> console.log(res, 'res') ).catch(err=> setError('error, ply try later'))
+    method(address).send({from: account }).then(res=> setError(null)).catch(err=> setError('error, please try later'))
 
   }
   return (
     <div className="box">
     {isOwner && <>
       <h2>Add Role to {role.value}</h2>
+      {error && <p className='error'>{error}</p>}
       <div className="form-group">
         Address
         <br />

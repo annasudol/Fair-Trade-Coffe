@@ -61,7 +61,7 @@ const { account, contract } = app
 return (
   <div className={styles.App}>
     <AddRole account={account} methods={contract.methods} />
-    <ProductOverview account={account} contract={contract} upc={upc} setUpc={setUpc} />
+    <ProductOverview methods={contract.methods} contract={contract} upc={upc} setUpc={setUpc} />
     <FarmDetail account={account} upc={upc} product={product} instance={contract} />
     <ProductDetails account={account} methods={contract.methods} upc={upc} product={product} setProduct={setProduct} />
     <TransactionHistory account={account} instance={contract} upc={upc} />
