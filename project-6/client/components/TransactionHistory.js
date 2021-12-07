@@ -1,7 +1,8 @@
 import React, { useEffect , useState} from 'react';
 
 function TransactionHistory({account, contract }) {
-  const [transactions, setTransactions] =useState([])
+  const [transactions, setTransactions] =useState([]);
+  
   useEffect(()=> {
     contract.getPastEvents().then(res=> {
       const transactionDetails =res.map(item=> {

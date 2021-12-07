@@ -46,9 +46,6 @@ export default function Home() {
     });
   }, [app]);
 
-
-
-
 if (!app.web3) {
   return <div>Loading Web3, accounts, and contract...</div>;
 }

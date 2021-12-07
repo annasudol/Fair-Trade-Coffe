@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-function ProductOverview({ account, methods, upc, setUpc }) {
-  // debugger
+function ProductOverview({ methods, upc, setUpc }) {
   const [sku, setSku] =useState('1');
   const [ownerId, setOwnerId] =useState('0x627306090abab3a6e1400e9345bc60c78a8bef57');
   const [error, setError]= useState(null);

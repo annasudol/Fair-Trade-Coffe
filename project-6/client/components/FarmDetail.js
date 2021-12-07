@@ -7,7 +7,6 @@ function FarmDetail({ account, upc, product, methods }) {
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
  
   const handleClick=async (value)=> {
-
     switch (value) {
       case "harvest":
       methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name).send({from: account}, (err,res)=>{
