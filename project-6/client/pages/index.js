@@ -5,7 +5,6 @@ import FarmDetail from "../components/FarmDetail.js";
 import ProductDetails from "../components/ProductDetails.js";
 import ProductOverview from "../components/ProductOverview.js";
 import TransactionHistory from "../components/TransactionHistory.js";
-import WhiIsAccount from "../components/WhoIsAccount";
 import AddRole from "../components/AddRole";
 
 import styles from '../styles/Home.module.css';
@@ -28,8 +27,6 @@ export default function Home() {
           deployedNetworkAddress,
         );
 
-        instance.getPastEvents().then(res=> console.log(res, 'res'))
-
         setApp({ ...app, web3, account: accounts[0], contract: instance });
 
       } catch (e) {
@@ -46,8 +43,7 @@ export default function Home() {
   useEffect(()=> {
     window.ethereum.on('accountsChanged', function (accounts) {
       setApp({ ...app, account: accounts[0] });
-    })
-    
+    });
   }, [app]);
 
 
@@ -60,12 +56,11 @@ const { account, contract } = app
 
 return (
   <div className={styles.App}>
+    <TransactionHistory account={account} contract={contract} upc={upc} />
     <AddRole account={account} methods={contract.methods} />
     <ProductOverview methods={contract.methods} contract={contract} upc={upc} setUpc={setUpc} />
     <FarmDetail account={account} upc={upc} product={product} instance={contract} />
     <ProductDetails account={account} methods={contract.methods} upc={upc} product={product} setProduct={setProduct} />
-    <TransactionHistory account={account} instance={contract} upc={upc} />
-    <WhiIsAccount account={account} methods={contract.methods} upc={upc} product={product}/>
   </div>
 );
 }

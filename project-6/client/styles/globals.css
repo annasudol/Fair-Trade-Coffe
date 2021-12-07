@@ -91,3 +91,10 @@ h2 {
   display: block;
   padding: 8px 20px 5px 10px;
 }
+
+.transaction-details span {
+  font-size: 10px;
+}
+.transaction-details p {
+  lin-height: 10px;
+}

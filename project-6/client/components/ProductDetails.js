@@ -6,31 +6,31 @@ function ProductDetails({ account, methods, upc, product, setProduct }) {
   const [error, setError]= useState(null);
   const [transactionConfirmation, setTransactionConfirmation]= useState(null);
   const handleClick=async (value)=> {
-    // switch (value)
-    // {
-    //   case "buy":
-    //     instance.buyItem(upc).send({from: account, value: 1 })
-    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-    //     .catch((err=> setError(err.message)));
-    //   break;
-    //   case "ship":
-    //     instance.shipItem(upc).send({from: account })
-    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-    //     .catch((err=> setError(err.message)));
-    //   break;
-    //   case "receive":
-    //     instance.receiveItem(upc).send({from: account })
-    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-    //     .catch((err=> setError(err.message)));
-    //   break;
-    //   case "purchase":
-    //     instance.purchaseItem(upc).send({from: account })
-    //     .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
-    //     .catch((err=> setError(err.message)));
-    //   break
-    //   default:
-    //   break;
-    // }
+    switch (value)
+    {
+      case "buy":
+        methods.buyItem(upc).send({from: account, value: 1 })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break;
+      case "ship":
+        methods.shipItem(upc).send({from: account })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break;
+      case "receive":
+        methods.receiveItem(upc).send({from: account })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break;
+      case "purchase":
+        instance.purchaseItem(upc).send({from: account })
+        .then(res=> setTransactionConfirmation({ transaction: value, from: res.from, to: res.to, transactionHash: res.transactionHash }) )
+        .catch((err=> setError(err.message)));
+      break
+      default:
+      break;
+    }
   }
   return (
     <div className="box">

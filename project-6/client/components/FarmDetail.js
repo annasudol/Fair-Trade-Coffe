@@ -10,15 +10,10 @@ function FarmDetail({ account, upc, product, methods }) {
 
     switch (value) {
       case "harvest":
-      
-        
-// console.log(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-//         instance.methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name)
-//         .send({from: account}, (err,res)=>{
-//           setError('Error with harvest item')
-//           console.log('res',res, err)
-//           setTransactionConfirmation(res)
-        // })
+      methods.harvestItem(upc, account, originFarmer.name,  originFarmer.info, originFarmer.lat, originFarmer.long, product.name).send({from: account}, (err,res)=>{
+          setError('Error with harvest item')
+          setTransactionConfirmation(res)
+        })
       break;
       case "process":
         methods.processItem(upc).send({from: account }).send({from: account}, (err,res)=>{
